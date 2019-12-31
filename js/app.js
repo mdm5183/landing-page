@@ -1,6 +1,7 @@
 //create nav menu link items
 const sections = document.getElementsByTagName("section");
 
+
 //loop through sections
 for (let i = 0; i < sections.length; i++) {
     let currentSection = sections[i].getAttribute("data-nav");
@@ -13,7 +14,8 @@ for (let i = 0; i < sections.length; i++) {
     document.getElementById("navbar__list").appendChild(node);
 
     // add event listener on click
-    node.addEventListener("click", scrollToSection);   
+    node.addEventListener("click", scrollToSection);
+    node.classList.add('active');
 };
 
 //add event listener on scroll  
@@ -61,12 +63,20 @@ const isInViewport = function (elem) {
 //remove active class 
 function removeAllActive() {
     const allSections = document.getElementsByTagName('section');
-    const allSectionsArray = Array.prototype.slice.call(allSections);
+    const allSectionsArray = [...allSections];
 
     allSectionsArray.forEach(section => section.classList.remove('active'));
+
+    const allNavLi = document.getElementsByTagName('li');
+    const allNavLiArray = [...allNavLi];
+
+    allNavLiArray.forEach(li => li.classList.remove('active'));
 };
 
 //add active class 
 function addActive(section) {
     section.classList.add('active');
+    function addActiveNav(li) {
+        li.classList.add('active');
+    };
 };
